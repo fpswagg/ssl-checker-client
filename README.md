@@ -14,8 +14,11 @@ npm run dev
 ## Deploy (Vercel)
 
 1. Connect this repo to Vercel.
-2. Set environment variable **`API_URL`** to your VPS API base URL (e.g. `http://146.59.237.166:3001`) — **Vercel dashboard only**, never commit it.
-3. Deploy. The dashboard at `https://sslchecker.fpswagg.site` will proxy `/api/*` to the API.
+2. **Project Settings → General:** Framework Preset = **Next.js**. **Output Directory must be empty** (not `dist` from the old Vite setup).
+3. Set environment variable **`API_URL`** to your VPS API base URL (e.g. `http://146.59.237.166:3001`) — **Vercel dashboard only**, never commit it.
+4. Redeploy. The dashboard will proxy `/api/*` to the API.
+
+If the build succeeds but deploy fails with *"No Output Directory named dist"*, clear **Output Directory** in project settings and redeploy.
 
 ## Docs
 
