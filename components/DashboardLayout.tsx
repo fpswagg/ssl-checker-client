@@ -11,6 +11,7 @@ const links = [
   { href: "/dashboard/emails", label: "Emails" },
   { href: "/dashboard/urls", label: "URLs" },
   { href: "/dashboard/history", label: "History" },
+  { href: "/dashboard/reports", label: "Reports" },
 ];
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {

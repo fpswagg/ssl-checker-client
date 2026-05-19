@@ -30,19 +30,22 @@ export async function api<T>(
 
   const res = await fetch(path, { ...options, headers });
 
-  if (res.status === 401) {
-    setToken(null);
-    if (typeof window !== "undefined") {
-      window.location.href = "/login";
-    }
-    throw new Error("Unauthorized");
-  }
-
   if (res.status === 204) {
     return undefined as T;
   }
 
   const data = await res.json().catch(() => ({}));
+
+  if (res.status === 401 && !path.includes("/auth/login")) {
+    setToken(null);
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
+    }
+    throw new Error(
+      typeof data.error === "string" ? data.error : "Unauthorized",
+    );
+  }
+
   if (!res.ok) {
     let message = "Request failed";
     if (typeof data.error === "string") {

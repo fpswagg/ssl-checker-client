@@ -18,9 +18,27 @@ const pressStart = Press_Start_2P({
   variable: "--font-pixel",
 });
 
+function siteBaseUrl(): string | undefined {
+  const url = process.env.WEBSITE_URL?.trim();
+  if (!url) return undefined;
+  return url.replace(/\/$/, "");
+}
+
+const baseUrl = siteBaseUrl();
+const iconUrl = baseUrl ? `${baseUrl}/logo.png` : undefined;
+
 export const metadata: Metadata = {
   title: "SSL Checker",
   description: "Monitor SSL certificates",
+  ...(iconUrl
+    ? {
+        icons: {
+          icon: iconUrl,
+          shortcut: iconUrl,
+          apple: iconUrl,
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({

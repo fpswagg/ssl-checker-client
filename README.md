@@ -15,8 +15,11 @@ npm run dev
 
 1. Connect this repo to Vercel.
 2. **Project Settings → General:** Framework Preset = **Next.js**. **Output Directory must be empty** (not `dist` from the old Vite setup).
-3. Set environment variable **`API_URL`** to your VPS API base URL (e.g. `http://146.59.237.166:3001`) — **Vercel dashboard only**, never commit it.
-4. Redeploy. The dashboard will proxy `/api/*` to the API.
+3. Set environment variables in Vercel (never commit real values):
+   - **`API_URL`** — VPS API base URL (e.g. `http://146.59.237.166:3001`)
+   - **`WEBSITE_URL`** — dashboard origin (e.g. `https://sslchecker.fpswagg.site`) for the favicon at `{WEBSITE_URL}/logo.png`
+4. Add **`public/logo.png`** to this repo (served at `/logo.png`).
+5. Redeploy. The dashboard will proxy `/api/*` to the API.
 
 If the build succeeds but deploy fails with *"No Output Directory named dist"*, clear **Output Directory** in project settings and redeploy.
 

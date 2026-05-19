@@ -32,6 +32,11 @@ export type SslCheckResult = {
   errorMessage: string | null;
 };
 
+export type SendReportResponse = {
+  ok: true;
+  sentTo: string[];
+};
+
 export type Overview = {
   emailCount: number;
   urlCount: number;
