@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+:root,
+:root[data-theme="dark"] {
+  --pine-900: #0f3d2e;
+  --pine-700: #14532d;
+  --pine-500: #1b7a47;
+  --teal-500: #14b8a6;
+  --teal-300: #5eead4;
+  --amber-500: #f59e0b;
+  --magenta-500: #ec4899;
+  --ink-950: #0a0e0c;
+  --ink-800: #1f2421;
+  --ink-600: #3a413d;
+  --mist-400: #9ca3af;
+  --bone-50: #faf7f0;
+  --bone-100: #f2ede0;
+  --bg: #0a0e0c;
+  --surface: #1f2421;
+  --surface-elevated: #27302c;
+  --text: #faf7f0;
+  --text-muted: #9ca3af;
+  --text-soft: #b6bfc8;
+  --primary: #14532d;
+  --primary-contrast: #faf7f0;
+  --accent: #14b8a6;
+  --accent-contrast: #0a0e0c;
+  --border: #3a413d;
+  --border-strong: #536058;
+  --ring: #5eead4;
+  --success: #1b7a47;
+  --info: #14b8a6;
+  --warning: #f59e0b;
+  --danger: #ec4899;
+  --success-soft: rgba(27, 122, 71, 0.15);
+  --warning-soft: rgba(245, 158, 11, 0.15);
+  --danger-soft: rgba(236, 72, 153, 0.15);
+  --focus-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--ring);
+}
+
+:root[data-theme="light"] {
+  --bg: #faf7f0;
+  --surface: #f2ede0;
+  --surface-elevated: #ebe4d3;
+  --text: #0a0e0c;
+  --text-muted: #576067;
+  --text-soft: #3f4952;
+  --primary: #0f3d2e;
+  --primary-contrast: #faf7f0;
+  --accent: #0f766e;
+  --accent-contrast: #faf7f0;
+  --border: #d1d5db;
+  --border-strong: #9ba7b4;
+  --ring: #0f766e;
+  --success: #1b7a47;
+  --info: #0f766e;
+  --warning: #f59e0b;
+  --danger: #dc2626;
+  --success-soft: rgba(27, 122, 71, 0.12);
+  --warning-soft: rgba(245, 158, 11, 0.12);
+  --danger-soft: rgba(220, 38, 38, 0.12);
+}
+
+* {
+  border-radius: 2px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+  transition:
+    background 160ms ease-out,
+    color 160ms ease-out;
+}
+
+.arcade-panel {
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.arcade-frame {
+  border: 1px solid var(--border-strong);
+  box-shadow: inset 0 0 0 1px var(--border);
+  background: var(--surface);
+}
+
+.mono-meta {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.8125rem;
+}
+
+.display-pixel {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+}
+
+.status-ok {
+  color: var(--success);
+}
+.status-warning {
+  color: var(--warning);
+}
+.status-error {
+  color: var(--danger);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
