@@ -1,11 +1,13 @@
-import { FormEvent, useEffect, useState } from "react";
-import { api } from "../lib/api";
-import type { NotificationEmail } from "../lib/types";
-import { PageHeader } from "../components/PageHeader";
-import { Button } from "../components/ui/Button";
-import { Input, Label } from "../components/ui/Field";
+"use client";
 
-export function EmailsPage() {
+import { FormEvent, useEffect, useState } from "react";
+import { api } from "@/lib/api";
+import type { NotificationEmail } from "@/lib/types";
+import { PageHeader } from "@/components/PageHeader";
+import { Button } from "@/components/ui/Button";
+import { Input, Label } from "@/components/ui/Field";
+
+export default function EmailsPage() {
   const [emails, setEmails] = useState<NotificationEmail[]>([]);
   const [address, setAddress] = useState("");
   const [label, setLabel] = useState("");

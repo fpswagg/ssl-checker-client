@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { api } from "../lib/api";
-import type { MonitoredUrl, SslCheckResult } from "../lib/types";
-import { PageHeader } from "../components/PageHeader";
-import { Label, Select } from "../components/ui/Field";
+"use client";
 
-export function HistoryPage() {
+import { useEffect, useState } from "react";
+import { api } from "@/lib/api";
+import type { MonitoredUrl, SslCheckResult } from "@/lib/types";
+import { PageHeader } from "@/components/PageHeader";
+import { Label, Select } from "@/components/ui/Field";
+
+export default function HistoryPage() {
   const [urls, setUrls] = useState<MonitoredUrl[]>([]);
   const [selectedId, setSelectedId] = useState("");
   const [checks, setChecks] = useState<SslCheckResult[]>([]);

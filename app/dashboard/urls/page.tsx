@@ -1,11 +1,13 @@
-import { FormEvent, useEffect, useState } from "react";
-import { api } from "../lib/api";
-import type { MonitoredUrl, NotificationEmail } from "../lib/types";
-import { PageHeader } from "../components/PageHeader";
-import { Button } from "../components/ui/Button";
-import { Input, Label } from "../components/ui/Field";
+"use client";
 
-export function UrlsPage() {
+import { FormEvent, useEffect, useState } from "react";
+import { api } from "@/lib/api";
+import type { MonitoredUrl, NotificationEmail } from "@/lib/types";
+import { PageHeader } from "@/components/PageHeader";
+import { Button } from "@/components/ui/Button";
+import { Input, Label } from "@/components/ui/Field";
+
+export default function UrlsPage() {
   const [urls, setUrls] = useState<MonitoredUrl[]>([]);
   const [emails, setEmails] = useState<NotificationEmail[]>([]);
   const [url, setUrl] = useState("");

@@ -1,31 +1,34 @@
 # AGENTS.md — SSL Checker Dashboard
 
-Standalone Vite + React SPA. Deploy `dist/` to any static host.
+Next.js App Router. Deploy on Vercel.
 
 ## Stack
 
-Vite, React, React Router, Tailwind 4, Sawabo CSS tokens.
+Next.js 15, React 19, Tailwind 4, Sawabo CSS tokens.
 
 ## Layout
 
 ```
-src/           Pages and components
-docs/          UI style guide
+app/              Routes and API proxy (app/api/[...path]/route.ts)
+components/       UI components
+lib/              api.ts, types.ts
+docs/             UI style guide
 ```
 
 ## Invariants
 
-1. API URL from `VITE_API_URL` at build time.
-2. JWT stored in `localStorage` (`ssl-checker-token`).
-3. Use semantic CSS variables from `src/index.css`; 2px radius.
+1. Browser calls relative `/api/*` only — never embed VPS IP or `API_URL` in client code.
+2. `API_URL` is server-only (Vercel env / `.env.local`).
+3. JWT in `localStorage` (`ssl-checker-token`).
+4. Semantic CSS variables from `app/globals.css`; 2px radius.
 
 ## Commands
 
 ```bash
 npm install
-cp .env.example .env
+cp .env.example .env.local
 npm run dev
-npm run build   # deploy dist/
+npm run build
 ```
 
 ## Docs
@@ -34,4 +37,4 @@ npm run build   # deploy dist/
 
 ## Related repo
 
-Backend API is a **separate repository**. Set `VITE_API_URL` to that API origin.
+Backend API is a **separate repository**. Set `API_URL` to that API origin in Vercel / `.env.local`.

@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-import { api } from "../lib/api";
-import type { Overview } from "../lib/types";
-import { PageHeader } from "../components/PageHeader";
-import { Button } from "../components/ui/Button";
+"use client";
 
-export function OverviewPage() {
+import { useEffect, useState } from "react";
+import { api } from "@/lib/api";
+import type { Overview } from "@/lib/types";
+import { PageHeader } from "@/components/PageHeader";
+import { Button } from "@/components/ui/Button";
+
+export default function OverviewPage() {
   const [data, setData] = useState<Overview | null>(null);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState("");
@@ -82,7 +84,9 @@ export function OverviewPage() {
                 className="flex flex-wrap items-center justify-between gap-2 border border-[var(--border)] p-3"
               >
                 <span>{row.label ?? row.url}</span>
-                <span className={`status-${row.status.toLowerCase()} text-sm uppercase`}>
+                <span
+                  className={`status-${row.status.toLowerCase()} text-sm uppercase`}
+                >
                   {row.status}
                   {row.daysRemaining !== null ? ` · ${row.daysRemaining}d` : ""}
                 </span>

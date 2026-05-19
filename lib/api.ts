@@ -1,10 +1,12 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3001";
+/** Browser calls same-origin /api/* — Next.js proxies to VPS using server-only API_URL. */
 
 function getToken(): string | null {
+  if (typeof window === "undefined") return null;
   return localStorage.getItem("ssl-checker-token");
 }
 
 export function setToken(token: string | null): void {
+  if (typeof window === "undefined") return;
   if (token) localStorage.setItem("ssl-checker-token", token);
   else localStorage.removeItem("ssl-checker-token");
 }
@@ -26,11 +28,13 @@ export async function api<T>(
     (headers as Record<string, string>)["Authorization"] = `Bearer ${token}`;
   }
 
-  const res = await fetch(`${API_URL}${path}`, { ...options, headers });
+  const res = await fetch(path, { ...options, headers });
 
   if (res.status === 401) {
     setToken(null);
-    window.location.href = "/login";
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
+    }
     throw new Error("Unauthorized");
   }
 

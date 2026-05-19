@@ -1,3 +1,4 @@
+"use client";
 const KEY = "sawabo-theme";
 
 export function ThemeToggle() {

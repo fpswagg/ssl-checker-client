@@ -1,11 +1,13 @@
-import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { api, setToken } from "../lib/api";
-import { Button } from "../components/ui/Button";
-import { Input, Label } from "../components/ui/Field";
+"use client";
 
-export function LoginPage() {
-  const navigate = useNavigate();
+import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { api, setToken } from "@/lib/api";
+import { Button } from "@/components/ui/Button";
+import { Input, Label } from "@/components/ui/Field";
+
+export default function LoginPage() {
+  const router = useRouter();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,7 +22,7 @@ export function LoginPage() {
         body: JSON.stringify({ password }),
       });
       setToken(token);
-      navigate("/dashboard");
+      router.push("/dashboard");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {
